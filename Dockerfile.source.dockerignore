@@ -1,0 +1,12 @@
+.git
+.github
+.idea
+.vscode
+target/
+crates/rustmail/static/
+docs/
+bin/
+db/
+*.db
+*.sqlite
+config.toml

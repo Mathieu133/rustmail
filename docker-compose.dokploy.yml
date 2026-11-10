@@ -1,0 +1,14 @@
+services:
+  rustmail:
+    build:
+      context: .
+      dockerfile: Dockerfile.source
+    restart: unless-stopped
+    working_dir: /app/db
+    volumes:
+      - rustmail-data:/app/db
+    environment:
+      - TZ=Europe/Paris
+
+volumes:
+  rustmail-data:
