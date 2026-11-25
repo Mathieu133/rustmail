@@ -2250,4 +2250,88 @@ pub fn load_english_messages(dict: &mut ErrorDictionary) {
         "category.roles_cleared".to_string(),
         DictionaryMessage::new("Cleared {count} role link(s) from category **{name}**."),
     );
+    dict.messages.insert(
+        "help.block".to_string(),
+        DictionaryMessage::new("Block a user from opening tickets or messaging the staff. Use `!block [user] [duration] [reason] [-s]`: without a user, blocks the user of the current ticket; without a duration (e.g. `30m`, `7d`, `1h30m`), the block is permanent. The user is notified unless `-s` is given."),
+    );
+    dict.messages.insert(
+        "help.unblock".to_string(),
+        DictionaryMessage::new("Lift a user's block. Use `!unblock [user]`: without a user, unblocks the user of the current ticket."),
+    );
+    dict.messages.insert(
+        "slash_command.block_command_description".to_string(),
+        DictionaryMessage::new("Block a user from contacting the staff through the bot."),
+    );
+    dict.messages.insert(
+        "slash_command.block_user_option".to_string(),
+        DictionaryMessage::new("User to block (defaults to the user of this ticket)."),
+    );
+    dict.messages.insert(
+        "slash_command.block_duration_option".to_string(),
+        DictionaryMessage::new("Block duration, e.g. 30m, 7d or 1h30m (permanent if empty)."),
+    );
+    dict.messages.insert(
+        "slash_command.block_reason_option".to_string(),
+        DictionaryMessage::new("Reason for the block (only visible to staff)."),
+    );
+    dict.messages.insert(
+        "slash_command.block_silent_option".to_string(),
+        DictionaryMessage::new("Do not notify the user that they are blocked."),
+    );
+    dict.messages.insert(
+        "slash_command.unblock_command_description".to_string(),
+        DictionaryMessage::new("Lift a user's block."),
+    );
+    dict.messages.insert(
+        "slash_command.unblock_user_option".to_string(),
+        DictionaryMessage::new("User to unblock (defaults to the user of this ticket)."),
+    );
+    dict.messages.insert(
+        "block.success_permanent".to_string(),
+        DictionaryMessage::new(
+            "{user} is now permanently blocked. Their messages to the bot will be ignored.",
+        ),
+    );
+    dict.messages.insert(
+        "block.success_temporary".to_string(),
+        DictionaryMessage::new(
+            "{user} is blocked until {until}. Their messages to the bot will be ignored.",
+        ),
+    );
+    dict.messages.insert(
+        "block.reason_line".to_string(),
+        DictionaryMessage::new("Reason: {reason}"),
+    );
+    dict.messages.insert(
+        "block.silent_line".to_string(),
+        DictionaryMessage::new("Silent block: the user was not notified."),
+    );
+    dict.messages.insert(
+        "block.missing_user".to_string(),
+        DictionaryMessage::new(
+            "Specify a user (mention or ID), or run this command inside a ticket.",
+        ),
+    );
+    dict.messages.insert(
+        "block.invalid_target".to_string(),
+        DictionaryMessage::new("You cannot block yourself or the bot."),
+    );
+    dict.messages.insert(
+        "block.user_notice_permanent".to_string(),
+        DictionaryMessage::new(
+            "You are blocked from contacting the staff. Your messages will not be delivered.",
+        ),
+    );
+    dict.messages.insert(
+        "block.user_notice_temporary".to_string(),
+        DictionaryMessage::new("You are blocked from contacting the staff until {until}. Your messages will not be delivered."),
+    );
+    dict.messages.insert(
+        "unblock.success".to_string(),
+        DictionaryMessage::new("{user} is no longer blocked."),
+    );
+    dict.messages.insert(
+        "unblock.not_blocked".to_string(),
+        DictionaryMessage::new("{user} is not blocked."),
+    );
 }

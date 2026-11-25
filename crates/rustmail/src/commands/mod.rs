@@ -10,6 +10,7 @@ use tokio::sync::watch::Receiver;
 pub mod add_reminder;
 pub mod alert;
 pub mod baninfo;
+pub mod block;
 pub mod category;
 pub mod close;
 pub mod command;
@@ -40,6 +41,7 @@ pub mod version;
 pub use add_reminder::*;
 pub use alert::*;
 pub use baninfo::*;
+pub use block::*;
 pub use category::*;
 pub use close::*;
 pub use command::*;
@@ -214,6 +216,8 @@ pub fn register_all(registry: &mut CommandRegistry, services: &CommandServices) 
         pagination: services.pagination.clone(),
     });
     registry.register(BaninfoCommand);
+    registry.register(BlockCommand);
+    registry.register(UnblockCommand);
     registry.register(AddStaffCommand);
     registry.register(RemoveStaffCommand);
     registry.register(ReminderSubscriptionCommand);

@@ -1,5 +1,6 @@
 pub mod api_keys;
 pub mod banned_users;
+pub mod blocked_users;
 pub mod features;
 pub mod init;
 pub mod logs;
@@ -14,6 +15,7 @@ pub mod ticket_categories;
 
 pub use api_keys::*;
 pub use banned_users::*;
+pub use blocked_users::*;
 pub use features::*;
 pub use init::*;
 pub use logs::*;

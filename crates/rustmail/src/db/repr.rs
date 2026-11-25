@@ -6,6 +6,12 @@ pub struct Thread {
     pub channel_id: String,
 }
 
+#[derive(Debug, Clone)]
+pub struct BlockedUser {
+    pub expires_at: Option<i64>,
+    pub silent: bool,
+}
+
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct ApiKey {
     pub id: i64,

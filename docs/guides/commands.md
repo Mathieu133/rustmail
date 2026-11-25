@@ -321,6 +321,48 @@ Get notified when the ticket receives a new message.
 
 ---
 
+## Blocking
+
+### block
+
+Prevent a user from opening tickets or messaging the staff. Their DMs to the bot are dropped, including messages
+sent to a ticket that is already open. The user gets a DM saying they are blocked, and is reminded when they write
+to the bot (at most once every 10 minutes). With `-s`, the user is never told.
+
+| Slash                                         | Text                                     |
+|-----------------------------------------------|------------------------------------------|
+| `/block [user] [duration] [reason] [silent]`  | `!block [user] [duration] [reason] [-s]` |
+
+**Parameters:**
+- `user` - Mention or ID of the user. Defaults to the user of the current ticket
+- `duration` - How long the block lasts (`30m`, `7d`, `1h30m`...). Permanent when omitted
+- `reason` - Free text, only visible to staff
+- `-s` / `--silent` - Do not notify the user, now or when they write
+
+**Examples:**
+```
+!block                                 # In a ticket: block its user permanently
+!block 7d spam                         # In a ticket: block for 7 days
+!block @user 1h30m insults             # Anywhere: block a specific user
+!block -s                              # In a ticket: block without notifying the user
+!block 7d spam -s                      # Silent 7-day block
+```
+
+Running `!block` again on a blocked user replaces the previous block.
+
+### unblock
+
+Lift a user's block.
+
+| Slash             | Text              |
+|-------------------|-------------------|
+| `/unblock [user]` | `!unblock [user]` |
+
+**Parameters:**
+- `user` - Mention or ID of the user. Defaults to the user of the current ticket
+
+---
+
 ## Information
 
 ### id
