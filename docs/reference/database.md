@@ -65,8 +65,10 @@ Stores blocked users who cannot create tickets.
 | `user_id` | TEXT | Primary key (Discord user ID) |
 | `user_name` | TEXT | Username when blocked |
 | `blocked_by` | TEXT | Staff who blocked |
-| `blocked_at` | DATETIME | Block timestamp |
-| `expires_at` | DATETIME | Block expiration |
+| `blocked_at` | INTEGER | Block timestamp (unix seconds) |
+| `expires_at` | INTEGER | Block expiration (unix seconds), `NULL` for a permanent block |
+| `reason` | TEXT | Optional reason given with `!block` |
+| `silent` | BOOLEAN | `true` when blocked with `-s`: the user is never notified |
 
 ### staff_alerts
 

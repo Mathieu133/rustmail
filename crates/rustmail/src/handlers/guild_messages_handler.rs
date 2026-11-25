@@ -18,6 +18,26 @@ use std::{collections::HashMap, sync::Arc};
 static SUPPRESSED_DELETES: LazyLock<Mutex<HashSet<u64>>> =
     LazyLock::new(|| Mutex::new(HashSet::new()));
 
+async fn reject_if_blocked(ctx: &Context, config: &Config, msg: &Message) -> bool {
+    let Some(pool) = &config.db_pool else {
+        return false;
+    };
+    let block = match get_active_block(msg.author.id, pool).await {
+        Ok(Some(block)) => block,
+        Ok(None) => return false,
+        Err(e) => {
+            eprintln!("Failed to check block status for {}: {}", msg.author.id, e);
+            return false;
+        }
+    };
+
+    if !block.silent {
+        notify_blocked_user(ctx, config, msg.author.id, block.expires_at, false).await;
+    }
+
+    true
+}
+
 #[derive(Clone)]
 pub struct GuildMessagesHandler {
     pub config: Arc<Config>,
@@ -170,6 +190,10 @@ impl EventHandler for GuildMessagesHandler {
                     .to_user(msg.author.id)
                     .send(true)
                     .await;
+                return;
+            }
+
+            if !msg.author.bot && reject_if_blocked(&ctx, &self.config, &msg).await {
                 return;
             }
 

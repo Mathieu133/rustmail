@@ -2265,4 +2265,86 @@ pub fn load_french_messages(dict: &mut ErrorDictionary) {
             "{count} association(s) de rôle supprimée(s) de la catégorie **{name}**.",
         ),
     );
+    dict.messages.insert(
+        "help.block".to_string(),
+        DictionaryMessage::new("Empêche un utilisateur d'ouvrir des tickets ou d'écrire au staff. Utilise `!block [utilisateur] [durée] [raison] [-s]` : sans utilisateur, bloque l'utilisateur du ticket actuel ; sans durée (ex. `30m`, `7d`, `1h30m`), le blocage est permanent. L'utilisateur est prévenu, sauf avec `-s`."),
+    );
+    dict.messages.insert(
+        "help.unblock".to_string(),
+        DictionaryMessage::new("Lève le blocage d'un utilisateur. Utilise `!unblock [utilisateur]` : sans utilisateur, débloque l'utilisateur du ticket actuel."),
+    );
+    dict.messages.insert(
+        "slash_command.block_command_description".to_string(),
+        DictionaryMessage::new("Empêche un utilisateur de contacter le staff via le bot."),
+    );
+    dict.messages.insert(
+        "slash_command.block_user_option".to_string(),
+        DictionaryMessage::new("Utilisateur à bloquer (par défaut, l'utilisateur de ce ticket)."),
+    );
+    dict.messages.insert(
+        "slash_command.block_duration_option".to_string(),
+        DictionaryMessage::new("Durée du blocage, ex. 30m, 7d ou 1h30m (permanent si vide)."),
+    );
+    dict.messages.insert(
+        "slash_command.block_reason_option".to_string(),
+        DictionaryMessage::new("Raison du blocage (visible uniquement par le staff)."),
+    );
+    dict.messages.insert(
+        "slash_command.block_silent_option".to_string(),
+        DictionaryMessage::new("Ne pas prévenir l'utilisateur qu'il est bloqué."),
+    );
+    dict.messages.insert(
+        "slash_command.unblock_command_description".to_string(),
+        DictionaryMessage::new("Lève le blocage d'un utilisateur."),
+    );
+    dict.messages.insert(
+        "slash_command.unblock_user_option".to_string(),
+        DictionaryMessage::new("Utilisateur à débloquer (par défaut, l'utilisateur de ce ticket)."),
+    );
+    dict.messages.insert(
+        "block.success_permanent".to_string(),
+        DictionaryMessage::new(
+            "{user} est désormais bloqué définitivement. Ses messages au bot seront ignorés.",
+        ),
+    );
+    dict.messages.insert(
+        "block.success_temporary".to_string(),
+        DictionaryMessage::new(
+            "{user} est bloqué jusqu'au {until}. Ses messages au bot seront ignorés.",
+        ),
+    );
+    dict.messages.insert(
+        "block.reason_line".to_string(),
+        DictionaryMessage::new("Raison : {reason}"),
+    );
+    dict.messages.insert(
+        "block.silent_line".to_string(),
+        DictionaryMessage::new("Blocage silencieux : l'utilisateur n'a pas été prévenu."),
+    );
+    dict.messages.insert(
+        "block.missing_user".to_string(),
+        DictionaryMessage::new(
+            "Précise un utilisateur (mention ou ID), ou lance cette commande dans un ticket.",
+        ),
+    );
+    dict.messages.insert(
+        "block.invalid_target".to_string(),
+        DictionaryMessage::new("Tu ne peux pas te bloquer toi-même ni bloquer le bot."),
+    );
+    dict.messages.insert(
+        "block.user_notice_permanent".to_string(),
+        DictionaryMessage::new("Tu as été bloqué et ne peux plus contacter le staff. Tes messages ne seront pas transmis."),
+    );
+    dict.messages.insert(
+        "block.user_notice_temporary".to_string(),
+        DictionaryMessage::new("Tu as été bloqué et ne peux plus contacter le staff jusqu'au {until}. Tes messages ne seront pas transmis."),
+    );
+    dict.messages.insert(
+        "unblock.success".to_string(),
+        DictionaryMessage::new("{user} n'est plus bloqué."),
+    );
+    dict.messages.insert(
+        "unblock.not_blocked".to_string(),
+        DictionaryMessage::new("{user} n'est pas bloqué."),
+    );
 }
